@@ -16,3 +16,24 @@
  */
 
 package com.gregcorp.devbyteviewer.database
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+
+@Dao
+interface VideoDao {
+
+    @Query("select * from databasevideo")
+    fun getVideos(): List<DatabaseVideo>
+
+    /**
+     * We want to replace the videos in the database if there is an update from the internet,
+     * so we use OnConflictStrategy.REPLACE.
+     * vararg means a variable number of arguments.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg videos: DatabaseVideo)
+
+}
