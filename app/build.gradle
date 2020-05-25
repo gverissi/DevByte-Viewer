@@ -81,7 +81,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.2.5"
     kapt "androidx.room:room-compiler:2.2.5"
 
-    // WorkManager
+    // WorkManager (ex: pre-fetch content when the app is in background or event not launched)
     implementation "android.arch.work:work-runtime-ktx:1.0.1"
 
     // Tests
