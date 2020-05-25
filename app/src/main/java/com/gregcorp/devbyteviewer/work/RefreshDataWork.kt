@@ -24,8 +24,18 @@ import com.gregcorp.devbyteviewer.database.getDatabase
 import com.gregcorp.devbyteviewer.repository.VideosRepository
 import retrofit2.HttpException
 
+/**
+ * RefreshDataWorker will fetch new results from the network and store them in the database
+ */
 class RefreshDataWorker(appContext: Context, params: WorkerParameters) : CoroutineWorker(appContext, params) {
 
+    companion object {
+        const val WORK_NAME = "RefreshDataWorker"
+    }
+
+    /**
+     * A coroutine-friendly method to do your work
+     */
     override suspend fun doWork(): Result {
         val database = getDatabase(applicationContext)
         val repository = VideosRepository(database)
